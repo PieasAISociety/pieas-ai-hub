@@ -130,11 +130,11 @@ const Events = () => {
                   </div>
 
                   <div className="flex gap-4 justify-center pt-4">
-                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground glow-cyan">
+                    <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground glow-primary">
                       Register Interest
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                    <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                    <Button variant="outline" className="border-primary text-foreground hover:bg-primary/10">
                       View Past Editions
                     </Button>
                   </div>
