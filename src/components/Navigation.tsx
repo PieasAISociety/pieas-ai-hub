@@ -43,7 +43,7 @@ export const Navigation = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? "bg-primary text-primary-foreground glow-cyan"
+                    ? "bg-gradient-to-r from-primary to-accent text-primary-foreground glow-primary"
                     : "text-foreground hover:text-primary hover:bg-secondary"
                 }`}
               >
@@ -73,7 +73,7 @@ export const Navigation = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-gradient-to-r from-primary to-accent text-primary-foreground"
                     : "text-foreground hover:bg-secondary"
                 }`}
               >

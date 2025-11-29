@@ -55,19 +55,19 @@ export const Footer = () => {
                 href="https://www.instagram.com/pieas.ai.society"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 glow-cyan"
+                className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300 glow-primary"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="mailto:contact@pieas-ai.org"
-                className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300"
               >
                 <Mail className="h-5 w-5" />
               </a>

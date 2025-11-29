@@ -107,7 +107,7 @@ const Bootcamps = () => {
                   </div>
                 </div>
 
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-cyan">
+                <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground glow-primary">
                   Register Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

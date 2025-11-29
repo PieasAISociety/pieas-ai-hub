@@ -8,40 +8,42 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 98%;
+    --background: 260 40% 6%;
+    --foreground: 40 80% 95%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 260 35% 10%;
+    --card-foreground: 40 80% 95%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 260 35% 10%;
+    --popover-foreground: 40 80% 95%;
 
-    --primary: 193 100% 50%;
-    --primary-foreground: 222 47% 5%;
+    --primary: 280 80% 60%;
+    --primary-foreground: 40 100% 98%;
 
-    --secondary: 222 47% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 260 40% 15%;
+    --secondary-foreground: 40 80% 95%;
 
-    --muted: 222 47% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 260 35% 18%;
+    --muted-foreground: 240 10% 60%;
 
-    --accent: 193 100% 50%;
-    --accent-foreground: 222 47% 5%;
+    --accent: 45 95% 65%;
+    --accent-foreground: 260 40% 10%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 80% 95%;
 
-    --border: 222 47% 18%;
-    --input: 222 47% 18%;
-    --ring: 193 100% 50%;
+    --border: 260 30% 20%;
+    --input: 260 30% 20%;
+    --ring: 280 80% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(193 100% 50% / 0.2), hsl(193 100% 70% / 0.1));
-    --gradient-hero: linear-gradient(180deg, hsl(222 47% 5%) 0%, hsl(222 47% 8%) 100%);
-    --glow-cyan: 0 0 40px hsl(193 100% 50% / 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gradient-primary: linear-gradient(135deg, hsl(280 80% 60% / 0.3), hsl(320 70% 50% / 0.2));
+    --gradient-hero: linear-gradient(180deg, hsl(260 40% 6%) 0%, hsl(280 50% 10%) 50%, hsl(260 40% 6%) 100%);
+    --gradient-accent: linear-gradient(120deg, hsl(280 80% 60%), hsl(320 70% 50%), hsl(45 95% 65%));
+    --glow-primary: 0 0 60px hsl(280 80% 60% / 0.4);
+    --glow-accent: 0 0 40px hsl(45 95% 65% / 0.3);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -62,8 +64,12 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .glow-cyan {
-    box-shadow: var(--glow-cyan);
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
   }
   
   .gradient-primary {
@@ -74,10 +80,30 @@ All colors MUST be HSL.
     background: var(--gradient-hero);
   }
 
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .circuit-grid {
     background-image: 
-      linear-gradient(hsl(193 100% 50% / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(193 100% 50% / 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+      radial-gradient(circle at 2px 2px, hsl(280 80% 60% / 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .mesh-gradient {
+    background: 
+      radial-gradient(at 40% 20%, hsl(280 80% 40% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsl(320 70% 40% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsl(240 60% 30% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsl(45 95% 50% / 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(280 60% 30% / 0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsl(320 70% 40% / 0.3) 0px, transparent 50%);
   }
 }

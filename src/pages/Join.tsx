@@ -187,7 +187,7 @@ const Join = () => {
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-cyan"
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground glow-primary"
                   >
                     Submit Application
                     <ArrowRight className="ml-2 h-4 w-4" />
