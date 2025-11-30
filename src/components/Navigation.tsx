@@ -27,7 +27,7 @@ export const Navigation = () => {
             <img 
               src={logo} 
               alt="PAIS Logo" 
-              className="h-12 w-12 transition-transform duration-300 group-hover:scale-110"
+              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
             />
             <div className="flex flex-col">
               <span className="font-orbitron text-xl font-bold text-foreground">PAIS</span>
