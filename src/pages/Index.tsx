@@ -38,14 +38,31 @@ const Index = () => {
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section - Completely Redesigned */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 mesh-gradient" />
-        <div className="absolute inset-0 circuit-grid opacity-20" />
+        {/* Multi-layer Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
+        <div className="absolute inset-0 mesh-gradient animate-pulse" style={{ animationDuration: "8s" }} />
+        <div className="absolute inset-0 circuit-grid opacity-10" />
         
-        {/* Floating Orbs */}
+        {/* Interactive Floating Orbs - Multiple Layers */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: "0s" }} />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-40 right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
+        
+        {/* Floating Particles */}
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-accent/40 rounded-full animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${15 + Math.random() * 10}s`,
+            }}
+          />
+        ))}
 
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <div className="max-w-6xl mx-auto text-center">
@@ -60,10 +77,10 @@ const Index = () => {
 
             {/* Main Heading */}
             <h1 
-              className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black mb-8 leading-none animate-fade-in-up"
+              className="text-4xl md:text-6xl lg:text-7xl font-orbitron font-black mb-6 leading-tight animate-fade-in-up"
               style={{ animationDelay: "0.4s" }}
             >
-              <span className="block mb-2">The Future of</span>
+              <span className="block mb-2 text-foreground/90">The Future of</span>
               <span className="gradient-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient-shift">
                 Artificial Intelligence
               </span>
@@ -71,7 +88,7 @@ const Index = () => {
 
             {/* Subtitle */}
             <p 
-              className="text-xl md:text-2xl text-foreground/80 max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in"
+              className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in"
               style={{ animationDelay: "0.6s" }}
             >
               Join PIEAS AI Society - where brilliant minds converge to pioneer breakthrough innovations, 
@@ -86,7 +103,7 @@ const Index = () => {
               <Button 
                 asChild 
                 size="lg" 
-                className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-bold rounded-xl glow-primary group transition-all duration-300"
+                className="text-base px-7 py-5 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-semibold rounded-xl glow-primary group transition-all duration-300"
               >
                 <Link to="/join">
                   Join the Revolution
@@ -97,7 +114,7 @@ const Index = () => {
                 asChild 
                 size="lg" 
                 variant="outline" 
-                className="text-lg px-8 py-6 border-2 border-primary/50 text-foreground hover:bg-primary/10 rounded-xl backdrop-blur-sm"
+                className="text-base px-7 py-5 border-2 border-primary/50 text-foreground hover:bg-primary/10 rounded-xl backdrop-blur-sm"
               >
                 <Link to="/bootcamps">
                   Explore Bootcamps
@@ -129,10 +146,10 @@ const Index = () => {
                 className="text-center group animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1 + 1.2}s` }}
               >
-                <div className={`text-5xl md:text-7xl font-orbitron font-black mb-4 bg-gradient-to-br ${achievement.gradient} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500`}>
+                <div className={`text-3xl md:text-5xl font-orbitron font-black mb-3 bg-gradient-to-br ${achievement.gradient} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500`}>
                   {achievement.value}
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                <div className="text-xs md:text-sm text-muted-foreground font-medium uppercase tracking-wide">
                   {achievement.label}
                 </div>
               </div>
@@ -145,11 +162,11 @@ const Index = () => {
       <section className="py-32 relative">
         <div className="absolute inset-0 circuit-grid opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-20 max-w-3xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-orbitron font-black mb-6">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-orbitron font-black mb-4">
               Why <span className="gradient-text">PAIS</span>?
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-base md:text-lg text-muted-foreground">
               We're not just another student society. We're a movement dedicated to transforming passion into expertise and ideas into reality.
             </p>
           </div>
@@ -170,10 +187,10 @@ const Index = () => {
                       <feature.icon className="h-8 w-8 text-primary" strokeWidth={2.5} />
                     </div>
                   </div>
-                  <h3 className="text-2xl font-orbitron font-bold mb-4 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-orbitron font-bold mb-3 group-hover:text-primary transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -203,13 +220,13 @@ const Index = () => {
                   <span className="text-sm font-bold text-accent">Applications Open</span>
                 </div>
 
-                <h2 className="text-4xl md:text-6xl font-orbitron font-black mb-6 leading-tight">
+                <h2 className="text-3xl md:text-4xl font-orbitron font-black mb-5 leading-tight">
                   Ready to Pioneer
                   <br />
                   <span className="gradient-text">AI Innovation?</span>
                 </h2>
                 
-                <p className="text-xl text-foreground/80 mb-10 max-w-2xl mx-auto">
+                <p className="text-base md:text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
                   Join Pakistan's most ambitious AI community and turn your potential into groundbreaking achievements
                 </p>
 
@@ -217,7 +234,7 @@ const Index = () => {
                   <Button 
                     asChild 
                     size="lg" 
-                    className="text-lg px-10 py-7 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-bold rounded-xl glow-primary"
+                    className="text-base px-8 py-5 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-semibold rounded-xl glow-primary"
                   >
                     <Link to="/join">
                       Apply for Membership
@@ -228,7 +245,7 @@ const Index = () => {
                     asChild 
                     size="lg" 
                     variant="outline"
-                    className="text-lg px-10 py-7 border-2 border-primary text-foreground hover:bg-primary/10 rounded-xl"
+                    className="text-base px-8 py-5 border-2 border-primary text-foreground hover:bg-primary/10 rounded-xl"
                   >
                     <Link to="/team">
                       Meet the Team
