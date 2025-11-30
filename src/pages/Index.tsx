@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const features = [
   {
@@ -35,24 +37,55 @@ const achievements = [
 ];
 
 const Index = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const yOrb1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const yOrb2 = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const yOrb3 = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const yOrb4 = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  const yCenter = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
+
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section - Completely Redesigned */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Particles Background */}
         <ParticlesBackground />
         
         {/* Multi-layer Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"
+          style={{ opacity }}
+        />
         <div className="absolute inset-0 mesh-gradient animate-pulse" style={{ animationDuration: "8s" }} />
         <div className="absolute inset-0 circuit-grid opacity-10" />
         
-        {/* Interactive Floating Orbs - Multiple Layers */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "0s" }} />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-40 right-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-3xl animate-glow-pulse" />
+        {/* Interactive Floating Orbs - Multiple Layers with Parallax */}
+        <motion.div 
+          className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" 
+          style={{ y: yOrb1, animationDelay: "0s" }} 
+        />
+        <motion.div 
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-float" 
+          style={{ y: yOrb2, animationDelay: "2s" }} 
+        />
+        <motion.div 
+          className="absolute top-40 right-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl animate-float" 
+          style={{ y: yOrb3, animationDelay: "1s" }} 
+        />
+        <motion.div 
+          className="absolute bottom-40 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" 
+          style={{ y: yOrb4, animationDelay: "3s" }} 
+        />
+        <motion.div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-3xl animate-glow-pulse"
+          style={{ y: yCenter }}
+        />
 
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <div className="max-w-6xl mx-auto text-center">
@@ -126,7 +159,13 @@ const Index = () => {
       </section>
 
       {/* Stats Section - Redesigned */}
-      <section className="py-32 relative">
+      <motion.section 
+        className="py-32 relative"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -146,10 +185,16 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Features Section - Completely Redesigned */}
-      <section className="py-32 relative">
+      <motion.section 
+        className="py-32 relative"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         <div className="absolute inset-0 circuit-grid opacity-10" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -163,11 +208,16 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {features.map((feature, index) => (
-              <Card 
+              <motion.div
                 key={feature.title}
-                className="group relative bg-gradient-to-br from-card via-card to-secondary/50 border-2 border-border hover:border-primary/50 transition-all duration-500 overflow-hidden animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.15}s` }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true, margin: "-50px" }}
               >
+                <Card 
+                  className="group relative bg-gradient-to-br from-card via-card to-secondary/50 border-2 border-border hover:border-primary/50 transition-all duration-500 overflow-hidden h-full"
+                >
                 {/* Hover Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:via-accent/5 group-hover:to-primary/5 transition-all duration-500" />
                 
@@ -185,13 +235,20 @@ const Index = () => {
                   </p>
                 </CardContent>
               </Card>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section - Dramatic Redesign */}
-      <section className="py-32 relative overflow-hidden">
+      <motion.section 
+        className="py-32 relative overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-accent/20" />
         <div className="absolute inset-0 mesh-gradient opacity-50" />
@@ -246,7 +303,7 @@ const Index = () => {
             </Card>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
