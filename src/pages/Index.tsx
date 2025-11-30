@@ -2,6 +2,7 @@ import { ArrowRight, Sparkles, Zap, Target, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const features = [
   {
@@ -38,31 +39,20 @@ const Index = () => {
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section - Completely Redesigned */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Particles Background */}
+        <ParticlesBackground />
+        
         {/* Multi-layer Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
         <div className="absolute inset-0 mesh-gradient animate-pulse" style={{ animationDuration: "8s" }} />
         <div className="absolute inset-0 circuit-grid opacity-10" />
         
         {/* Interactive Floating Orbs - Multiple Layers */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-float" style={{ animationDelay: "0s" }} />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-40 right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
-        
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-accent/40 rounded-full animate-float"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
-            }}
-          />
-        ))}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "0s" }} />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-40 right-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-3xl animate-glow-pulse" />
 
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <div className="max-w-6xl mx-auto text-center">
