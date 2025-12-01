@@ -49,8 +49,9 @@ export default {
         },
       },
       fontFamily: {
-        orbitron: ['Orbitron', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        orbitron: ['Oxanium', 'Rajdhani', 'sans-serif'],
+        inter: ['Rajdhani', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -139,6 +140,32 @@ export default {
           "50%": {
             backgroundPosition: "100% 50%"
           }
+        },
+        "shimmer": {
+          "0%": {
+            backgroundPosition: "-200% center"
+          },
+          "100%": {
+            backgroundPosition: "200% center"
+          }
+        },
+        "pulse-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsl(190 95% 60% / 0.3), 0 0 60px hsl(190 95% 60% / 0.1)"
+          },
+          "50%": {
+            boxShadow: "0 0 40px hsl(190 95% 60% / 0.6), 0 0 100px hsl(190 95% 60% / 0.3)"
+          }
+        },
+        "neural-pulse": {
+          "0%, 100%": {
+            opacity: "0.4",
+            transform: "scale(1)"
+          },
+          "50%": {
+            opacity: "1",
+            transform: "scale(1.05)"
+          }
         }
       },
       animation: {
@@ -151,6 +178,9 @@ export default {
         "slide-in-left": "slide-in-left 0.8s ease-out forwards",
         "slide-in-right": "slide-in-right 0.8s ease-out forwards",
         "gradient-shift": "gradient-shift 8s ease infinite",
+        "shimmer": "shimmer 3s linear infinite",
+        "pulse-glow": "pulse-glow 4s ease-in-out infinite",
+        "neural-pulse": "neural-pulse 3s ease-in-out infinite",
       },
     },
   },
