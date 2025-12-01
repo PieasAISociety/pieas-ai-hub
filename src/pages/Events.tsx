@@ -2,6 +2,13 @@ import { Sparkles, Calendar, MapPin, Users, Trophy, ArrowRight } from "lucide-re
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { EventGallery } from "@/components/EventGallery";
+import workshopImg from "@/assets/events/workshop-1.jpg";
+import hackathonImg from "@/assets/events/hackathon-1.jpg";
+import panelImg from "@/assets/events/panel-1.jpg";
+import networkingImg from "@/assets/events/networking-1.jpg";
+import awardsImg from "@/assets/events/awards-1.jpg";
+import showcaseImg from "@/assets/events/showcase-1.jpg";
 
 const orientAI = {
   title: "Orient AI 2024",
@@ -43,6 +50,15 @@ const pastEvents = [
     type: "Panel",
     participants: "80+",
   },
+];
+
+const eventPhotos = [
+  { url: workshopImg, title: "AI Workshop Series", date: "November 2024" },
+  { url: hackathonImg, title: "ML Hackathon Competition", date: "September 2024" },
+  { url: panelImg, title: "Tech Talk Panel Discussion", date: "October 2024" },
+  { url: networkingImg, title: "Networking Session", date: "August 2024" },
+  { url: awardsImg, title: "Awards Ceremony", date: "September 2024" },
+  { url: showcaseImg, title: "Project Showcase Exhibition", date: "November 2024" },
 ];
 
 const Events = () => {
@@ -176,6 +192,23 @@ const Events = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Event Gallery */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-orbitron font-bold mb-4">
+              Event <span className="text-primary">Gallery</span>
+            </h2>
+            <p className="text-muted-foreground">
+              Relive the moments from our recent events and workshops
+            </p>
+          </div>
+          <div className="max-w-7xl mx-auto">
+            <EventGallery images={eventPhotos} />
           </div>
         </div>
       </section>
