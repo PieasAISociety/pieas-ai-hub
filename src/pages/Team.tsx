@@ -1,5 +1,6 @@
 import { Users, Mail, Linkedin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 const teamMembers = [
   {
@@ -66,46 +67,70 @@ const Team = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card 
+              <motion.div
                 key={member.role}
-                className="group bg-card border-border hover:border-primary transition-all duration-500 overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <CardContent className="p-6">
-                  <div className="relative mb-6">
-                    <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/20 group-hover:border-primary transition-all duration-500 group-hover:glow-cyan">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                      />
+                <Card className="group relative bg-card border-border hover:border-primary transition-all duration-500 overflow-hidden h-full">
+                  <CardContent className="p-6">
+                    <div className="relative mb-6">
+                      <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/20 group-hover:border-primary transition-all duration-500 group-hover:glow-cyan">
+                        <img 
+                          src={member.image} 
+                          alt={member.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-bold">
+                        {member.role}
+                      </div>
                     </div>
-                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-bold">
-                      {member.role}
-                    </div>
-                  </div>
-                  
-                  <div className="text-center mt-8">
-                    <h3 className="text-xl font-orbitron font-bold mb-2">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{member.description}</p>
                     
-                    <div className="flex justify-center gap-3 mt-6">
-                      <a
-                        href="#"
-                        className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    <div className="text-center mt-8">
+                      <h3 className="text-xl font-orbitron font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                        {member.name}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4">{member.description}</p>
+                      
+                      {/* Social links - hidden by default, revealed on hover */}
+                      <motion.div 
+                        className="flex justify-center gap-3 mt-6"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileHover={{ opacity: 1, y: 0 }}
+                        animate={{ opacity: 0, y: 10 }}
                       >
-                        <Mail className="h-4 w-4" />
-                      </a>
-                      <a
-                        href="#"
-                        className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                      >
-                        <Linkedin className="h-4 w-4" />
-                      </a>
+                        <motion.a
+                          href="#"
+                          className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Mail className="h-4 w-4" />
+                        </motion.a>
+                        <motion.a
+                          href="#"
+                          className="p-2 bg-secondary rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Linkedin className="h-4 w-4" />
+                        </motion.a>
+                      </motion.div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                  
+                  {/* Overlay that appears on hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
