@@ -11,31 +11,31 @@ import jsImg from "@/assets/team/joint-secretary.jpg";
 
 const teamMembers = [
   {
-    name: "[President Name]",
+    name: "Syed Darain Hyder Kazmi",
     role: "President",
     description: "Leading strategic vision and initiatives for the society",
     image: presidentImg,
   },
   {
-    name: "[VP Name]",
+    name: "Abdul Basit",
     role: "Vice President",
     description: "Supporting operations and coordinating major events",
     image: vpImg,
   },
   {
-    name: "[GS Name]",
+    name: "Muhammad Awais",
     role: "General Secretary",
     description: "Managing communications and administrative affairs",
     image: gsImg,
   },
   {
-    name: "[Treasurer Name]",
+    name: "Noor ul Huda",
     role: "Treasurer",
     description: "Overseeing financial planning and resource allocation",
     image: treasurerImg,
   },
   {
-    name: "[JS Name]",
+    name: "Aqsa Majeed",
     role: "Joint Secretary",
     description: "Assisting in organizational management and coordination",
     image: jsImg,
