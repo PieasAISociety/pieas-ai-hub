@@ -79,11 +79,7 @@ export const Navigation = () => {
               >
                 <Link
                   to={link.path}
-                  className={`relative px-6 py-2.5 rounded-xl font-rajdhani font-bold text-sm tracking-wider transition-all duration-300 ${
-                    isActive(link.path)
-                      ? "text-background"
-                      : "text-foreground hover:text-primary"
-                  }`}
+                  className="relative px-6 py-2.5 rounded-xl font-rajdhani font-bold text-sm tracking-wider transition-all duration-300 text-foreground hover:text-primary"
                 >
                   {isActive(link.path) && (
                     <motion.div
@@ -92,7 +88,7 @@ export const Navigation = () => {
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className={`relative z-10 flex items-center gap-2 ${isActive(link.path) ? "!text-white drop-shadow-md" : ""}`}>
                     {link.name}
                     {link.name === "Join Us" && (
                       <Sparkles className="h-3.5 w-3.5 animate-pulse" />
