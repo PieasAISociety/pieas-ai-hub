@@ -69,7 +69,7 @@ export const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1 p-1.5 rounded-full bg-secondary/30 backdrop-blur-md border border-border/50">
+          <div className="hidden md:flex items-center gap-2 p-2 rounded-2xl bg-background/80 backdrop-blur-xl border border-primary/20 shadow-lg">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.path}
@@ -79,20 +79,20 @@ export const Navigation = () => {
               >
                 <Link
                   to={link.path}
-                  className={`relative px-5 py-2.5 rounded-full font-rajdhani font-semibold text-sm tracking-wide transition-all duration-300 ${
+                  className={`relative px-6 py-2.5 rounded-xl font-rajdhani font-bold text-sm tracking-wider transition-all duration-300 ${
                     isActive(link.path)
-                      ? "text-primary-foreground"
-                      : "text-foreground/80 hover:text-primary"
+                      ? "text-background"
+                      : "text-foreground hover:text-primary"
                   }`}
                 >
                   {isActive(link.path) && (
                     <motion.div
                       layoutId="navbar-active"
-                      className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full shadow-[0_0_20px_rgba(0,255,255,0.5)]"
+                      className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-xl shadow-[0_0_20px_rgba(0,255,255,0.5)]"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10 flex items-center gap-1.5">
+                  <span className="relative z-10 flex items-center gap-2">
                     {link.name}
                     {link.name === "Join Us" && (
                       <Sparkles className="h-3.5 w-3.5 animate-pulse" />
