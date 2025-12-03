@@ -48,7 +48,7 @@ const Join = () => {
 
     try {
       await emailjs.send(
-        "service_mb81xph",
+        "service_rxotsyh",
         "template_spd4d0i",
         templateParams,
         "I0OT2uXi8qOb9_wMO"
