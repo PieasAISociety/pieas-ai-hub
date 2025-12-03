@@ -1,9 +1,12 @@
-import { UserPlus, CheckCircle2, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { UserPlus, CheckCircle2, ArrowRight, Loader2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const benefits = [
   "Access to exclusive AI workshops and bootcamps",
@@ -22,10 +25,51 @@ const requirements = [
 ];
 
 const Join = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted");
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const templateParams = {
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      rollNumber: formData.get("rollNumber"),
+      department: formData.get("department"),
+      year: formData.get("year"),
+      interest: formData.get("interest"),
+      experience: formData.get("experience") || "Not provided",
+    };
+
+    try {
+      await emailjs.send(
+        "service_mb81xph",
+        "template_spd4d0i",
+        templateParams,
+        "I0OT2uXi8qOb9_wMO"
+      );
+
+      toast({
+        title: "Application Submitted!",
+        description: "We'll review your application and get back to you soon.",
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -108,7 +152,8 @@ const Join = () => {
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name</Label>
                       <Input 
-                        id="firstName" 
+                        id="firstName"
+                        name="firstName"
                         placeholder="John" 
                         required 
                         className="bg-background"
@@ -117,7 +162,8 @@ const Join = () => {
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
                       <Input 
-                        id="lastName" 
+                        id="lastName"
+                        name="lastName"
                         placeholder="Doe" 
                         required 
                         className="bg-background"
@@ -128,7 +174,8 @@ const Join = () => {
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input 
-                      id="email" 
+                      id="email"
+                      name="email"
                       type="email" 
                       placeholder="john.doe@pieas.edu.pk" 
                       required 
@@ -139,7 +186,8 @@ const Join = () => {
                   <div className="space-y-2">
                     <Label htmlFor="rollNumber">Roll Number</Label>
                     <Input 
-                      id="rollNumber" 
+                      id="rollNumber"
+                      name="rollNumber"
                       placeholder="2021-CS-123" 
                       required 
                       className="bg-background"
@@ -149,7 +197,8 @@ const Join = () => {
                   <div className="space-y-2">
                     <Label htmlFor="department">Department</Label>
                     <Input 
-                      id="department" 
+                      id="department"
+                      name="department"
                       placeholder="Computer Science" 
                       required 
                       className="bg-background"
@@ -159,7 +208,8 @@ const Join = () => {
                   <div className="space-y-2">
                     <Label htmlFor="year">Year of Study</Label>
                     <Input 
-                      id="year" 
+                      id="year"
+                      name="year"
                       placeholder="3rd Year" 
                       required 
                       className="bg-background"
@@ -169,7 +219,8 @@ const Join = () => {
                   <div className="space-y-2">
                     <Label htmlFor="interest">Why do you want to join PAIS?</Label>
                     <Textarea 
-                      id="interest" 
+                      id="interest"
+                      name="interest"
                       placeholder="Tell us about your interest in AI and what you hope to achieve..." 
                       required 
                       className="bg-background min-h-32"
@@ -179,7 +230,8 @@ const Join = () => {
                   <div className="space-y-2">
                     <Label htmlFor="experience">Previous AI/ML Experience (Optional)</Label>
                     <Textarea 
-                      id="experience" 
+                      id="experience"
+                      name="experience"
                       placeholder="Share any relevant projects, courses, or experience..." 
                       className="bg-background"
                     />
@@ -187,10 +239,20 @@ const Join = () => {
 
                   <Button 
                     type="submit" 
+                    disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground glow-primary"
                   >
-                    Submit Application
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit Application
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
