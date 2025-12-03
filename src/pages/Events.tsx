@@ -30,7 +30,7 @@ const pastEvents = [
     title: "AI Workshop Series",
     date: "November 2024",
     type: "Workshop",
-    participants: "60+",
+    participants: "200+",
   },
   {
     title: "Tech Talk: Future of AI",
@@ -134,7 +134,7 @@ const Events = () => {
                     <h3 className="font-orbitron font-bold mb-4 text-center">Event Highlights</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {orientAI.highlights.map((highlight) => (
-                        <div 
+                        <div
                           key={highlight}
                           className="flex items-center gap-2 p-3 bg-secondary/50 rounded-lg"
                         >
@@ -167,7 +167,7 @@ const Events = () => {
           <h2 className="text-3xl font-orbitron font-bold mb-12 text-center">Recent Events</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {pastEvents.map((event, index) => (
-              <Card 
+              <Card
                 key={event.title}
                 className="bg-card border-border hover:border-primary transition-all duration-500"
                 style={{ animationDelay: `${index * 0.1}s` }}

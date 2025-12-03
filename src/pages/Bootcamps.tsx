@@ -6,9 +6,9 @@ import { Badge } from "@/components/ui/badge";
 const upcomingBootcamp = {
   title: "AI & Machine Learning Bootcamp 2024",
   date: "December 2024",
-  duration: "6 Weeks",
+  duration: "1 Weeks",
   location: "PIEAS Campus",
-  participants: "50+ Students",
+  participants: "150+ Students",
   status: "Registrations Open",
   topics: ["Python Fundamentals", "Machine Learning", "Deep Learning", "NLP", "Computer Vision", "Projects"],
 };
