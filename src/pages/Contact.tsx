@@ -83,7 +83,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h3 className="font-bold mb-1">Email Us</h3>
-                                        <p className="text-muted-foreground">contact@pais.edu.pk</p>
+                                        <p className="text-muted-foreground">pieas.ai.society@gmail.com</p>
                                     </div>
                                 </div>
 
@@ -93,22 +93,72 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <h3 className="font-bold mb-1">Call Us</h3>
-                                        <p className="text-muted-foreground">+92 (51) 123-4567</p>
+                                        <p className="text-muted-foreground">+92 343 3055357</p>
                                     </div>
                                 </div>
 
                                 <div className="pt-6 border-t border-border">
                                     <h3 className="font-bold mb-4">Follow Us</h3>
                                     <div className="flex gap-4">
-                                        <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary">
-                                            <Linkedin className="h-5 w-5" />
-                                        </Button>
-                                        <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary">
-                                            <Github className="h-5 w-5" />
-                                        </Button>
-                                        <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary">
-                                            <Globe className="h-5 w-5" />
-                                        </Button>
+                                        <a
+                                            href="https://www.linkedin.com/company/pieas-artificial-intelligence-society-01/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary">
+                                                <Linkedin className="h-5 w-5" />
+                                            </Button>
+                                        </a>
+                                        <a
+                                            href="https://www.instagram.com/pieas.ai.society?utm_source=qr&igsh=ZTdpYnF2amtoaGJs"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary">
+                                                <div className="h-5 w-5">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        strokeWidth="2"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        className="lucide lucide-instagram"
+                                                    >
+                                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                                                    </svg>
+                                                </div>
+                                            </Button>
+                                        </a>
+                                        <a
+                                            href="https://www.facebook.com/share/1CBe5LDZDJ/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <Button variant="outline" size="icon" className="rounded-full hover:text-primary hover:border-primary">
+                                                <div className="h-5 w-5">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        width="24"
+                                                        height="24"
+                                                        viewBox="0 0 24 24"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        strokeWidth="2"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        className="lucide lucide-facebook"
+                                                    >
+                                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                                    </svg>
+                                                </div>
+                                            </Button>
+                                        </a>
                                     </div>
                                 </div>
                             </CardContent>

@@ -4,7 +4,7 @@ import { Menu, X, Sparkles, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
-import logo from "@/assets/pais-logo.png";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -38,8 +38,8 @@ export const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? "bg-background/70 backdrop-blur-2xl border-b border-primary/10 shadow-lg shadow-primary/5"
-          : "bg-transparent"
+        ? "bg-background/70 backdrop-blur-2xl border-b border-primary/10 shadow-lg shadow-primary/5"
+        : "bg-transparent"
         }`}
     >
       {/* Premium Gradient Line */}
@@ -48,28 +48,8 @@ export const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo Section */}
-          <Link to="/" className="flex items-center gap-3 group relative z-50">
-            <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-primary/40 blur-xl rounded-full group-hover:bg-primary/60 transition-all duration-500" />
-              <img
-                src={logo}
-                alt="PAIS Logo"
-                className="h-12 w-auto object-contain relative z-10 drop-shadow-lg"
-              />
-            </motion.div>
-            <div className="flex flex-col">
-              <span className="font-oxanium text-2xl font-bold bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent drop-shadow-sm">
-                PAIS
-              </span>
-              <span className="text-[10px] text-muted-foreground/80 font-rajdhani tracking-[0.2em] uppercase">
-                AI Society
-              </span>
-            </div>
+          <Link to="/" className="block">
+            <BrandLogo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -190,8 +170,8 @@ export const Navigation = () => {
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={`flex items-center justify-center gap-3 w-full px-6 py-3 rounded-2xl font-rajdhani font-bold text-lg tracking-wider transition-all duration-300 ${isActive(link.path)
-                        ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg shadow-primary/25 scale-105"
-                        : "bg-secondary/50 text-foreground/80 hover:bg-secondary hover:scale-105"
+                      ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg shadow-primary/25 scale-105"
+                      : "bg-secondary/50 text-foreground/80 hover:bg-secondary hover:scale-105"
                       }`}
                   >
                     {link.name}

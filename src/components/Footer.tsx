@@ -1,5 +1,5 @@
-import { Instagram, Linkedin, Mail } from "lucide-react";
-import logo from "@/assets/pais-logo.png";
+import { Instagram, Linkedin, Facebook, Mail } from "lucide-react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 export const Footer = () => {
   return (
@@ -8,13 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo & Description */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <img src={logo} alt="PAIS Logo" className="h-12 w-12" />
-              <div>
-                <h3 className="font-orbitron text-lg font-bold">PAIS</h3>
-                <p className="text-sm text-muted-foreground">AI Society</p>
-              </div>
-            </div>
+            <BrandLogo />
             <p className="text-sm text-muted-foreground">
               Empowering the next generation of AI innovators at PIEAS
             </p>
@@ -52,7 +46,7 @@ export const Footer = () => {
             <h4 className="font-orbitron font-bold mb-4 text-primary">Connect With Us</h4>
             <div className="flex gap-4">
               <a
-                href="https://www.instagram.com/pieas.ai.society"
+                href="https://www.instagram.com/pieas.ai.society?utm_source=qr&igsh=ZTdpYnF2amtoaGJs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300 glow-primary"
@@ -60,13 +54,23 @@ export const Footer = () => {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/pieas-artificial-intelligence-society-01/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:contact@pieas-ai.org"
+                href="https://www.facebook.com/share/1CBe5LDZDJ/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:pieas.ai.society@gmail.com"
                 className="p-2 bg-secondary rounded-lg hover:bg-gradient-to-br hover:from-primary hover:to-accent hover:text-primary-foreground transition-all duration-300"
               >
                 <Mail className="h-5 w-5" />
