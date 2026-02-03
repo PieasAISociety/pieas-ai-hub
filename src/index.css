@@ -18,7 +18,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 220 28% 8%;
 
-    --primary: 190 95% 40%; /* Darker cyan for better readability on white */
+    --primary: 190 95% 40%;
+    /* Darker cyan for better readability on white */
     --primary-foreground: 210 20% 98%;
 
     --secondary: 220 15% 95%;
@@ -41,26 +42,22 @@ All colors MUST be HSL.
 
     /* Light gradients */
     --gradient-primary: linear-gradient(135deg, hsl(190 95% 40% / 0.1), hsl(200 90% 45% / 0.05));
-    --gradient-neural: linear-gradient(135deg, 
-      hsl(190 95% 40% / 0.05) 0%, 
-      hsl(200 85% 55% / 0.05) 25%,
-      hsl(15 95% 55% / 0.05) 75%,
-      hsl(25 90% 55% / 0.05) 100%
-    );
-    --gradient-hero: linear-gradient(180deg, 
-      hsl(0 0% 100%) 0%, 
-      hsl(220 15% 97%) 100%
-    );
-    --gradient-accent: linear-gradient(120deg, 
-      hsl(15 95% 55%), 
-      hsl(20 92% 58%), 
-      hsl(10 98% 62%)
-    );
+    --gradient-neural: linear-gradient(135deg,
+        hsl(190 95% 40% / 0.05) 0%,
+        hsl(200 85% 55% / 0.05) 25%,
+        hsl(15 95% 55% / 0.05) 75%,
+        hsl(25 90% 55% / 0.05) 100%);
+    --gradient-hero: linear-gradient(180deg,
+        hsl(0 0% 100%) 0%,
+        hsl(220 15% 97%) 100%);
+    --gradient-accent: linear-gradient(120deg,
+        hsl(15 95% 55%),
+        hsl(20 92% 58%),
+        hsl(10 98% 62%));
     --gradient-cyber: linear-gradient(90deg,
-      hsl(190 95% 40% / 0.1) 0%,
-      hsl(190 95% 40% / 0) 50%,
-      hsl(15 95% 55% / 0.1) 100%
-    );
+        hsl(190 95% 40% / 0.1) 0%,
+        hsl(190 95% 40% / 0) 50%,
+        hsl(15 95% 55% / 0.1) 100%);
 
     /* Softer glows for light mode */
     --glow-cyan: 0 0 20px hsl(190 95% 40% / 0.2);
@@ -106,29 +103,25 @@ All colors MUST be HSL.
 
     /* Stunning gradient system matching logo aesthetic */
     --gradient-primary: linear-gradient(135deg, hsl(190 95% 60% / 0.25), hsl(200 90% 65% / 0.15));
-    --gradient-neural: linear-gradient(135deg, 
-      hsl(190 95% 60% / 0.15) 0%, 
-      hsl(200 85% 55% / 0.1) 25%,
-      hsl(15 95% 60% / 0.1) 75%,
-      hsl(25 90% 55% / 0.15) 100%
-    );
-    --gradient-hero: linear-gradient(180deg, 
-      hsl(220 28% 8%) 0%, 
-      hsl(220 30% 12%) 30%,
-      hsl(220 28% 10%) 60%,
-      hsl(220 28% 8%) 100%
-    );
-    --gradient-accent: linear-gradient(120deg, 
-      hsl(15 95% 60%), 
-      hsl(20 92% 58%), 
-      hsl(10 98% 62%)
-    );
+    --gradient-neural: linear-gradient(135deg,
+        hsl(190 95% 60% / 0.15) 0%,
+        hsl(200 85% 55% / 0.1) 25%,
+        hsl(15 95% 60% / 0.1) 75%,
+        hsl(25 90% 55% / 0.15) 100%);
+    --gradient-hero: linear-gradient(180deg,
+        hsl(220 28% 8%) 0%,
+        hsl(220 30% 12%) 30%,
+        hsl(220 28% 10%) 60%,
+        hsl(220 28% 8%) 100%);
+    --gradient-accent: linear-gradient(120deg,
+        hsl(15 95% 60%),
+        hsl(20 92% 58%),
+        hsl(10 98% 62%));
     --gradient-cyber: linear-gradient(90deg,
-      hsl(190 95% 60% / 0.3) 0%,
-      hsl(190 95% 60% / 0) 50%,
-      hsl(15 95% 60% / 0.3) 100%
-    );
-    
+        hsl(190 95% 60% / 0.3) 0%,
+        hsl(190 95% 60% / 0) 50%,
+        hsl(15 95% 60% / 0.3) 100%);
+
     /* Advanced glow effects matching logo's luminous aesthetic */
     --glow-cyan: 0 0 30px hsl(190 95% 60% / 0.4), 0 0 60px hsl(190 95% 60% / 0.2), 0 0 100px hsl(190 95% 60% / 0.1);
     --glow-coral: 0 0 30px hsl(15 95% 60% / 0.4), 0 0 60px hsl(15 95% 60% / 0.2);
@@ -149,7 +142,12 @@ All colors MUST be HSL.
     letter-spacing: 0.02em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Oxanium', 'Rajdhani', sans-serif;
     font-weight: 700;
     letter-spacing: 0.05em;
@@ -158,6 +156,7 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+
   /* Glow utilities matching logo's luminous design */
   .glow-cyan {
     box-shadow: var(--glow-cyan);
@@ -183,12 +182,12 @@ All colors MUST be HSL.
   .glow-accent {
     box-shadow: var(--glow-coral);
   }
-  
+
   /* Gradient backgrounds */
   .gradient-primary {
     background: var(--gradient-primary);
   }
-  
+
   .gradient-neural {
     background: var(--gradient-neural);
   }
@@ -224,7 +223,7 @@ All colors MUST be HSL.
 
   /* Neural network circuit grid matching logo */
   .circuit-grid {
-    background-image: 
+    background-image:
       radial-gradient(circle at 2px 2px, hsl(190 95% 60% / 0.2) 1px, transparent 0);
     background-size: 50px 50px;
     position: relative;
@@ -234,7 +233,7 @@ All colors MUST be HSL.
     content: '';
     position: absolute;
     inset: 0;
-    background-image: 
+    background-image:
       linear-gradient(90deg, hsl(190 95% 60% / 0.03) 1px, transparent 1px),
       linear-gradient(0deg, hsl(190 95% 60% / 0.03) 1px, transparent 1px);
     background-size: 100px 100px;
@@ -243,7 +242,7 @@ All colors MUST be HSL.
 
   /* Advanced mesh gradient with neural network feel */
   .mesh-gradient {
-    background: 
+    background:
       radial-gradient(at 20% 30%, hsl(190 95% 60% / 0.15) 0px, transparent 50%),
       radial-gradient(at 80% 20%, hsl(200 90% 65% / 0.12) 0px, transparent 50%),
       radial-gradient(at 40% 70%, hsl(15 95% 60% / 0.1) 0px, transparent 50%),
@@ -256,33 +255,65 @@ All colors MUST be HSL.
 
   /* Shimmer effect for interactive elements */
   .shimmer {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(190 95% 60% / 0.4) 50%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(190 95% 60% / 0.4) 50%,
+        transparent 100%);
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% center;
+    }
+
+    100% {
+      background-position: -200% center;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 8s linear infinite;
+  }
+
+  @keyframes float-up {
+    0% {
+      transform: translateY(120vh) rotate(0deg);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.8;
+    }
+
+    90% {
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: translateY(-20vh) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  .animate-float-up {
+    animation: float-up 20s linear infinite;
   }
 
   /* Neural connection lines effect */
   .neural-lines {
     background-image:
-      repeating-linear-gradient(
-        90deg,
+      repeating-linear-gradient(90deg,
         hsl(190 95% 60% / 0.05) 0px,
         transparent 1px,
         transparent 50px,
-        hsl(190 95% 60% / 0.05) 51px
-      ),
-      repeating-linear-gradient(
-        0deg,
+        hsl(190 95% 60% / 0.05) 51px),
+      repeating-linear-gradient(0deg,
         hsl(190 95% 60% / 0.05) 0px,
         transparent 1px,
         transparent 50px,
-        hsl(190 95% 60% / 0.05) 51px
-      );
+        hsl(190 95% 60% / 0.05) 51px);
   }
 
   /* Glass morphism effect */
@@ -304,37 +335,41 @@ All colors MUST be HSL.
 
   /* Text shadow for depth */
   .text-glow-cyan {
-    text-shadow: 
+    text-shadow:
       0 0 10px hsl(190 95% 60% / 0.8),
       0 0 20px hsl(190 95% 60% / 0.5),
       0 0 30px hsl(190 95% 60% / 0.3);
   }
 
   .text-glow-coral {
-    text-shadow: 
+    text-shadow:
       0 0 10px hsl(15 95% 60% / 0.8),
       0 0 20px hsl(15 95% 60% / 0.5),
       0 0 30px hsl(15 95% 60% / 0.3);
   }
 }
 
-/* Scrollbar styling to match theme */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  /* Keep original height for consistency if not specified */
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(220 28% 8%);
+  background: hsl(var(--background));
+  /* Use var for background */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, hsl(190 95% 60%), hsl(15 95% 60%));
+  background: hsl(var(--primary) / 0.3);
+  /* Use var for primary */
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, hsl(190 95% 70%), hsl(15 95% 70%));
+  background: hsl(var(--primary) / 0.5);
+  /* Use var for primary */
 }
 
 /* Selection styling */

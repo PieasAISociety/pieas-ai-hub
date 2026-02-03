@@ -10,6 +10,7 @@ import { FAQButton } from "@/components/FAQButton";
 import Index from "./pages/Index";
 import Projects from "./pages/Projects";
 import Team from "./pages/Team";
+import AILab from "./pages/AILab";
 import Bootcamps from "./pages/Bootcamps";
 import Events from "./pages/Events";
 import Contact from "./pages/Contact";
@@ -30,7 +31,8 @@ const App = () => (
             <main className="flex-1">
               <Routes>
                 <Route path="/" element={<Index />} />
-                <Route path="/projects" element={<Projects />} />
+                {/* <Route path="/projects" element={<Projects />} /> */}
+                <Route path="/ai-lab" element={<AILab />} />
                 <Route path="/team" element={<Team />} />
                 <Route path="/bootcamps" element={<Bootcamps />} />
                 <Route path="/events" element={<Events />} />

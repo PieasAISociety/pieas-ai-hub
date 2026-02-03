@@ -8,7 +8,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "Projects", path: "/projects" },
+  { name: "AI Lab", path: "/ai-lab" },
   { name: "Team", path: "/team" },
   { name: "Bootcamps", path: "/bootcamps" },
   { name: "Events", path: "/events" },
