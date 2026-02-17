@@ -84,7 +84,7 @@ const AILab = () => {
                             transition={{ delay: 0.1 }}
                             className="text-5xl md:text-7xl font-oxanium font-bold mb-6"
                         >
-                            PIEAS <span className="text-primary glow-text">AI Lab</span>
+                            PIEAS <span className="text-primary glow-text">AI Infrastructure</span>
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}

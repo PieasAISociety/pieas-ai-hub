@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Partners } from "@/components/Partners";
 
 const features = [
   {
@@ -56,33 +57,33 @@ const Index = () => {
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Particles Background */}
         <ParticlesBackground />
-        
+
         {/* Multi-layer Animated Background */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background"
           style={{ opacity }}
         />
         <div className="absolute inset-0 mesh-gradient animate-pulse" style={{ animationDuration: "8s" }} />
         <div className="absolute inset-0 circuit-grid opacity-10" />
-        
+
         {/* Interactive Floating Orbs - Multiple Layers with Parallax */}
-        <motion.div 
-          className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" 
-          style={{ y: yOrb1, animationDelay: "0s" }} 
+        <motion.div
+          className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float"
+          style={{ y: yOrb1, animationDelay: "0s" }}
         />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-float" 
-          style={{ y: yOrb2, animationDelay: "2s" }} 
+        <motion.div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl animate-float"
+          style={{ y: yOrb2, animationDelay: "2s" }}
         />
-        <motion.div 
-          className="absolute top-40 right-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl animate-float" 
-          style={{ y: yOrb3, animationDelay: "1s" }} 
+        <motion.div
+          className="absolute top-40 right-20 w-64 h-64 bg-primary/15 rounded-full blur-3xl animate-float"
+          style={{ y: yOrb3, animationDelay: "1s" }}
         />
-        <motion.div 
-          className="absolute bottom-40 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float" 
-          style={{ y: yOrb4, animationDelay: "3s" }} 
+        <motion.div
+          className="absolute bottom-40 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float"
+          style={{ y: yOrb4, animationDelay: "3s" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-3xl animate-glow-pulse"
           style={{ y: yCenter }}
         />
@@ -90,7 +91,7 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <div className="max-w-6xl mx-auto text-center">
             {/* Badge */}
-            <div 
+            <div
               className="inline-flex items-center gap-2 px-6 py-3 bg-secondary/50 backdrop-blur-xl border border-primary/30 rounded-full mb-8 animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
@@ -99,7 +100,7 @@ const Index = () => {
             </div>
 
             {/* Main Heading */}
-            <h1 
+            <h1
               className="text-4xl md:text-6xl lg:text-7xl font-orbitron font-black mb-6 leading-tight animate-fade-in-up"
               style={{ animationDelay: "0.4s" }}
             >
@@ -110,22 +111,22 @@ const Index = () => {
             </h1>
 
             {/* Subtitle */}
-            <p 
+            <p
               className="text-base md:text-lg text-foreground/70 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in"
               style={{ animationDelay: "0.6s" }}
             >
-              Join PIEAS AI Society - where brilliant minds converge to pioneer breakthrough innovations, 
+              Join PIEAS AI Society - where brilliant minds converge to pioneer breakthrough innovations,
               master cutting-edge technologies, and shape the intelligence revolution
             </p>
 
             {/* CTA Buttons */}
-            <div 
+            <div
               className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in"
               style={{ animationDelay: "0.8s" }}
             >
-              <Button 
-                asChild 
-                size="lg" 
+              <Button
+                asChild
+                size="lg"
                 className="text-base px-7 py-5 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-semibold rounded-xl glow-primary group transition-all duration-300"
               >
                 <Link to="/join">
@@ -133,10 +134,10 @@ const Index = () => {
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button 
-                asChild 
-                size="lg" 
-                variant="outline" 
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
                 className="text-base px-7 py-5 border-2 border-primary/50 text-foreground hover:bg-primary/10 rounded-xl backdrop-blur-sm"
               >
                 <Link to="/bootcamps">
@@ -146,7 +147,7 @@ const Index = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <div 
+            <div
               className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
               style={{ animationDelay: "1s" }}
             >
@@ -158,8 +159,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Partners / Collaborators Section */}
+      <Partners />
+
       {/* Stats Section - Redesigned */}
-      <motion.section 
+      <motion.section
         className="py-32 relative"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -170,8 +174,8 @@ const Index = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {achievements.map((achievement, index) => (
-              <div 
-                key={achievement.label} 
+              <div
+                key={achievement.label}
                 className="text-center group animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1 + 1.2}s` }}
               >
@@ -188,7 +192,7 @@ const Index = () => {
       </motion.section>
 
       {/* Features Section - Completely Redesigned */}
-      <motion.section 
+      <motion.section
         className="py-32 relative"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -215,26 +219,26 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <Card 
+                <Card
                   className="group relative bg-gradient-to-br from-card via-card to-secondary/50 border-2 border-border hover:border-primary/50 transition-all duration-500 overflow-hidden h-full"
                 >
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:via-accent/5 group-hover:to-primary/5 transition-all duration-500" />
-                
-                <CardContent className="p-8 relative z-10">
-                  <div className="mb-6 inline-flex">
-                    <div className="p-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl group-hover:glow-primary transition-all duration-500 group-hover:scale-110">
-                      <feature.icon className="h-8 w-8 text-primary" strokeWidth={2.5} />
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:via-accent/5 group-hover:to-primary/5 transition-all duration-500" />
+
+                  <CardContent className="p-8 relative z-10">
+                    <div className="mb-6 inline-flex">
+                      <div className="p-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl group-hover:glow-primary transition-all duration-500 group-hover:scale-110">
+                        <feature.icon className="h-8 w-8 text-primary" strokeWidth={2.5} />
+                      </div>
                     </div>
-                  </div>
-                  <h3 className="text-xl font-orbitron font-bold mb-3 group-hover:text-primary transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+                    <h3 className="text-xl font-orbitron font-bold mb-3 group-hover:text-primary transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>
@@ -242,7 +246,7 @@ const Index = () => {
       </motion.section>
 
       {/* CTA Section - Dramatic Redesign */}
-      <motion.section 
+      <motion.section
         className="py-32 relative overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -260,7 +264,7 @@ const Index = () => {
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-              
+
               <CardContent className="p-12 md:p-16 text-center relative z-10">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full mb-6">
                   <Sparkles className="h-4 w-4 text-accent animate-glow-pulse" />
@@ -272,15 +276,15 @@ const Index = () => {
                   <br />
                   <span className="gradient-text">AI Innovation?</span>
                 </h2>
-                
+
                 <p className="text-base md:text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
                   Join Pakistan's most ambitious AI community and turn your potential into groundbreaking achievements
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    asChild 
-                    size="lg" 
+                  <Button
+                    asChild
+                    size="lg"
                     className="text-base px-8 py-5 bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground font-semibold rounded-xl glow-primary"
                   >
                     <Link to="/join">
@@ -288,9 +292,9 @@ const Index = () => {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </Button>
-                  <Button 
-                    asChild 
-                    size="lg" 
+                  <Button
+                    asChild
+                    size="lg"
                     variant="outline"
                     className="text-base px-8 py-5 border-2 border-primary text-foreground hover:bg-primary/10 rounded-xl"
                   >

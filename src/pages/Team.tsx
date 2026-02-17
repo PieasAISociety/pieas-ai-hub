@@ -60,9 +60,9 @@ const developers = [
     role: "Web developer, ML/AI Practitioner",
     image: developerAvatar,
     socials: {
-      linkedin: "#",
-      github: "#",
-      email: "mailto:contact@example.com"
+      linkedin: "https://www.linkedin.com/in/mansoob-e-zahra-3126ba257?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      github: "https://github.com/MansoobeZahra",
+      email: "mailto:mansoobzehra@gmail.com"
     }
   },
   {

@@ -11,9 +11,9 @@ import awardsImg from "@/assets/events/awards-1.jpg";
 import showcaseImg from "@/assets/events/showcase-1.jpg";
 
 const orientAI = {
-  title: "Orient AI 2024",
+  title: "Orient AI 2026",
   tagline: "Annual AI Innovation Summit",
-  date: "Coming Soon",
+  date: "April 7, 2026",
   description: "Our flagship event bringing together AI enthusiasts, researchers, and industry experts for a celebration of innovation and learning.",
   highlights: [
     "Expert Speaker Sessions",
@@ -61,7 +61,13 @@ const eventPhotos = [
   { url: showcaseImg, title: "Project Showcase Exhibition", date: "November 2024" },
 ];
 
+import { Link } from "react-router-dom";
+
 const Events = () => {
+  const scrollToRecent = () => {
+    document.getElementById('recent-events')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -146,11 +152,17 @@ const Events = () => {
                   </div>
 
                   <div className="flex gap-4 justify-center pt-4">
-                    <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground glow-primary">
-                      Register Interest
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                    <Button asChild className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-primary-foreground glow-primary">
+                      <Link to="/contact">
+                        Register Interest
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
                     </Button>
-                    <Button variant="outline" className="border-primary text-foreground hover:bg-primary/10">
+                    <Button
+                      variant="outline"
+                      className="border-primary text-foreground hover:bg-primary/10"
+                      onClick={scrollToRecent}
+                    >
                       View Past Editions
                     </Button>
                   </div>
@@ -162,7 +174,7 @@ const Events = () => {
       </section>
 
       {/* Recent Events */}
-      <section className="py-20 bg-secondary/30">
+      <section id="recent-events" className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-orbitron font-bold mb-12 text-center">Recent Events</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
