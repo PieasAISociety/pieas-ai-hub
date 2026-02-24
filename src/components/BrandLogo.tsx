@@ -19,7 +19,7 @@ export const BrandLogo = () => {
                     <img
                         src={logo}
                         alt="PAIS Logo"
-                        className="h-full w-full object-cover scale-125 object-center mix-blend-screen"
+                        className="h-full w-full object-cover scale-110 pointer-events-none mix-blend-screen"
                     // Using mix-blend-screen assuming the logo has a black background, or object-cover to simple fill the circle
                     />
                 </div>

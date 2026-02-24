@@ -3,12 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EventGallery } from "@/components/EventGallery";
-import workshopImg from "@/assets/events/workshop-1.jpg";
-import hackathonImg from "@/assets/events/hackathon-1.jpg";
-import panelImg from "@/assets/events/panel-1.jpg";
-import networkingImg from "@/assets/events/networking-1.jpg";
-import awardsImg from "@/assets/events/awards-1.jpg";
-import showcaseImg from "@/assets/events/showcase-1.jpg";
+import event1Img from "@/assets/events/event-1.jpg";
+import event2Img from "@/assets/events/event-2.jpg";
+import event3Img from "@/assets/events/event-3.jpg";
+import event4Img from "@/assets/events/event-4.jpg";
+import event6Img from "@/assets/events/event-6.jpg";
+import event7Img from "@/assets/events/event-7.jpg";
 
 const orientAI = {
   title: "Orient AI 2026",
@@ -53,12 +53,12 @@ const pastEvents = [
 ];
 
 const eventPhotos = [
-  { url: workshopImg, title: "AI Workshop Series", date: "November 2024" },
-  { url: hackathonImg, title: "ML Hackathon Competition", date: "September 2024" },
-  { url: panelImg, title: "Tech Talk Panel Discussion", date: "October 2024" },
-  { url: networkingImg, title: "Networking Session", date: "August 2024" },
-  { url: awardsImg, title: "Awards Ceremony", date: "September 2024" },
-  { url: showcaseImg, title: "Project Showcase Exhibition", date: "November 2024" },
+  { url: event1Img, title: "Orient AI - Inauguration Ceremony", date: "2023" },
+  { url: event2Img, title: "ML Hands-on Workshop", date: "2023" },
+  { url: event3Img, title: "Tech Leaders Panel Discussion", date: "2023" },
+  { url: event4Img, title: "AI Project Showcase", date: "2023" },
+  { url: event6Img, title: "Academic Poster Session", date: "2023" },
+  { url: event7Img, title: "Closing Ceremony & Awards", date: "2023" },
 ];
 
 import { Link } from "react-router-dom";

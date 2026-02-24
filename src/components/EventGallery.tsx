@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 
 interface EventGalleryProps {
@@ -10,10 +9,6 @@ interface EventGalleryProps {
 
 export const EventGallery = ({ images }: EventGalleryProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: "start" });
-
-  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-  const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
   const openLightbox = (index: number) => {
     setSelectedImage(index);
@@ -33,62 +28,56 @@ export const EventGallery = ({ images }: EventGalleryProps) => {
     setSelectedImage((prev) => (prev === null ? null : (prev + 1) % images.length));
   };
 
+  // Calculate total width of one set of images (width + gap)
+  const setWidth = (350 + 24) * images.length;
+  // Duplicate images for seamless marquee
+  const marqueeImages = [...images, ...images, ...images];
+
   return (
     <>
-      {/* Carousel */}
-      <div className="relative">
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4">
-            {images.map((image, index) => (
-              <motion.div
-                key={index}
-                className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div
-                  className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer group"
-                  onClick={() => openLightbox(index)}
-                >
-                  <img
-                    src={image.url}
-                    alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h4 className="font-orbitron font-bold text-white mb-1">{image.title}</h4>
-                      <p className="text-sm text-white/80">{image.date}</p>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/50 transition-colors duration-300 rounded-lg" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <div className="relative overflow-hidden group py-10">
+        {/* Gradient Masks for Fade Effect */}
+        <div className="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        {/* Navigation Buttons */}
-        {images.length > 3 && (
-          <>
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur border-primary/50 hover:bg-primary/20 z-10"
-              onClick={scrollPrev}
+        <motion.div
+          className="flex gap-6 cursor-pointer"
+          style={{ willChange: "transform", transform: "translateZ(0)" }}
+          animate={{ x: [0, -setWidth] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: images.length * 10, // Slower: 60s for 6 images
+              ease: "linear",
+            },
+          }}
+          whileHover={{ animationPlayState: "paused" }}
+        >
+          {marqueeImages.map((image, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-[350px] relative aspect-[4/3] rounded-xl overflow-hidden group/item border border-white/5"
+              onClick={() => openLightbox(index % images.length)}
             >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur border-primary/50 hover:bg-primary/20 z-10"
-              onClick={scrollNext}
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
-          </>
-        )}
+              <img
+                src={image.url}
+                alt={image.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover/item:opacity-100 transition-all duration-500">
+                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover/item:translate-y-0 transition-transform duration-500">
+                  <h4 className="font-oxanium font-bold text-white text-lg mb-1">{image.title}</h4>
+                  <p className="font-rajdhani text-sm text-primary font-semibold">{image.date}</p>
+                </div>
+              </div>
+
+              {/* Animated corner border */}
+              <div className="absolute top-0 right-0 w-0 h-0 border-t-2 border-r-2 border-primary/0 group-hover/item:w-8 group-hover/item:h-8 group-hover/item:border-primary/50 transition-all duration-500" />
+              <div className="absolute bottom-0 left-0 w-0 h-0 border-b-2 border-l-2 border-primary/0 group-hover/item:w-8 group-hover/item:h-8 group-hover/item:border-primary/50 transition-all duration-500" />
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Lightbox Modal */}
@@ -98,65 +87,79 @@ export const EventGallery = ({ images }: EventGalleryProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/98 z-[100] flex items-center justify-center p-4 backdrop-blur-xl"
             onClick={closeLightbox}
           >
             <Button
               variant="ghost"
               size="icon"
-              className="absolute top-4 right-4 text-white hover:bg-white/10"
+              className="absolute top-6 right-6 text-white hover:bg-white/10 rounded-full w-12 h-12"
               onClick={closeLightbox}
             >
-              <X className="h-6 w-6" />
+              <X className="h-8 w-8" />
             </Button>
 
             <Button
               variant="ghost"
               size="icon"
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10"
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 rounded-full w-16 h-16 hidden md:flex"
               onClick={(e) => {
                 e.stopPropagation();
                 showPrevImage();
               }}
             >
-              <ChevronLeft className="h-8 w-8" />
+              <ChevronLeft className="h-10 w-10" />
             </Button>
 
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10"
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 rounded-full w-16 h-16 hidden md:flex"
               onClick={(e) => {
                 e.stopPropagation();
                 showNextImage();
               }}
             >
-              <ChevronRight className="h-8 w-8" />
+              <ChevronRight className="h-10 w-10" />
             </Button>
 
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="relative max-w-7xl max-h-[90vh]"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, type: "spring", damping: 25 }}
+              className="relative max-w-7xl w-full max-h-[85vh] flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={images[selectedImage].url}
-                alt={images[selectedImage].title}
-                className="max-w-full max-h-[90vh] object-contain rounded-lg"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
-                <h3 className="font-orbitron font-bold text-white text-xl mb-2">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <img
+                  src={images[selectedImage].url}
+                  alt={images[selectedImage].title}
+                  className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl shadow-primary/20 border border-white/10"
+                />
+              </div>
+              <div className="mt-8 text-center max-w-2xl">
+                <motion.h3
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="font-oxanium font-bold text-white text-2xl md:text-3xl mb-2"
+                >
                   {images[selectedImage].title}
-                </h3>
-                <p className="text-white/80">{images[selectedImage].date}</p>
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="font-rajdhani text-primary font-bold tracking-widest uppercase"
+                >
+                  {images[selectedImage].date}
+                </motion.p>
               </div>
             </motion.div>
 
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm">
-              {selectedImage + 1} / {images.length}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 font-mono text-sm tracking-widest">
+              {String(selectedImage + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
             </div>
           </motion.div>
         )}

@@ -7,22 +7,30 @@ import {
     Cloud,
     Shield,
     Wifi,
-    Code
+    Code,
+    Settings,
+    Network,
+    GraduationCap,
+    Rocket
 } from "lucide-react";
 
 // Placeholder partners since no logos are available yet
+// Real university AI societies and partners
 const partners = [
-    { name: "TechCorp", icon: Cpu },
-    { name: "Global AI", icon: Globe },
-    { name: "DataSystems", icon: Server },
-    { name: "NeuralNet", icon: Database },
-    { name: "CloudScale", icon: Cloud },
-    { name: "SecureCyber", icon: Shield },
-    { name: "ConnectX", icon: Wifi },
-    { name: "DevStudio", icon: Code },
+    { name: "COMSATS AI Society", icon: Cpu, color: "#026537" }, // COMSATS Green
+    { name: "UET AI Club", icon: Settings, color: "#800000" },    // UET Maroon
+    { name: "FAST-NU AI Society", icon: Network, color: "#00AEF0" }, // Electric Blue
+    { name: "GDGoC", icon: Globe, color: "#4285F4" },            // Google Blue
+    { name: "NUST AI Club", icon: GraduationCap, color: "#002366" }, // NUST Royal Blue
+    { name: "Air University AI", icon: Cloud, color: "#00BFFF" },
+    { name: "IST AI Society", icon: Rocket, color: "#000080" },
 ];
 
+
 export const Partners = () => {
+    // Dynamic width calculation for seamless loop
+    const setWidth = partners.length * 300; // Estimated spacing
+
     return (
         <section className="py-10 bg-black/50 border-y border-white/5 overflow-hidden">
             <div className="container mx-auto px-4 mb-6">
@@ -39,24 +47,27 @@ export const Partners = () => {
                 {/* Infinite Scroll Animation */}
                 <motion.div
                     className="flex gap-16 items-center whitespace-nowrap"
-                    animate={{ x: [0, -1000] }}
+                    animate={{ x: [0, -setWidth] }}
                     transition={{
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 30, // Adjust speed here
+                            duration: 40,
                             ease: "linear",
                         },
                     }}
                 >
                     {/* Double the list to ensure seamless looping */}
-                    {[...partners, ...partners, ...partners].map((partner, index) => (
+                    {[...partners, ...partners].map((partner, index) => (
                         <div
                             key={`${partner.name}-${index}`}
-                            className="flex items-center gap-3 text-muted-foreground/50 hover:text-primary transition-colors duration-300 cursor-pointer"
+                            className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer group/partner"
+                            style={{ color: partner.color }}
                         >
-                            <partner.icon className="h-8 w-8" strokeWidth={1.5} />
-                            <span className="text-xl font-orbitron font-bold opacity-80">{partner.name}</span>
+                            <partner.icon className="h-8 w-8 transition-transform duration-300 group-hover/partner:scale-110" strokeWidth={2} />
+                            <span className="text-xl font-orbitron font-bold tracking-tight">
+                                {partner.name}
+                            </span>
                         </div>
                     ))}
                 </motion.div>

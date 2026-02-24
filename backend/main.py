@@ -12,6 +12,13 @@ import os
 # Load environment variables
 load_dotenv()
 
+# Fix for Pydantic v2 + fastapi-mail compatibility
+try:
+    from pydantic import SecretStr
+    ConnectionConfig.model_rebuild()
+except ImportError:
+    pass
+
 app = FastAPI()
 
 # CORS Configuration

@@ -12,6 +12,7 @@ import gsImg from "@/assets/team/general-secretary.jpg";
 import treasurerImg from "@/assets/team/treasurer.jpg";
 import jsImg from "@/assets/team/joint-secretary.jpg";
 import developerAvatar from "@/assets/developer-avatar.png";
+import mansoobImg from "@/assets/mansoob.jpg";
 import darainPhoto from "@/assets/darain.jpg";
 
 const teamMembers = [
@@ -58,7 +59,7 @@ const developers = [
   {
     name: "Mansoob-e-Zahra",
     role: "Web developer, ML/AI Practitioner",
-    image: developerAvatar,
+    image: mansoobImg,
     socials: {
       linkedin: "https://www.linkedin.com/in/mansoob-e-zahra-3126ba257?utm_source=share_via&utm_content=profile&utm_medium=member_android",
       github: "https://github.com/MansoobeZahra",

@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const upcomingBootcamp = {
-  title: "AI & Machine Learning Bootcamp 2024",
-  date: "December 2024",
+  title: "AI & Machine Learning Bootcamp 2026",
+  date: "March 2026",
   duration: "1 Weeks",
-  location: "PIEAS Campus",
+  location: "Online Google Meet",
   participants: "150+ Students",
   status: "Registrations Open",
   topics: ["Python Fundamentals", "Machine Learning", "Deep Learning", "NLP", "Computer Vision", "Projects"],
@@ -123,7 +123,7 @@ const Bootcamps = () => {
           <h2 className="text-3xl font-orbitron font-bold mb-12 text-center">Previous Bootcamps</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {pastBootcamps.map((bootcamp, index) => (
-              <Card 
+              <Card
                 key={bootcamp.title}
                 className="bg-card border-border hover:border-primary transition-all duration-500"
                 style={{ animationDelay: `${index * 0.1}s` }}

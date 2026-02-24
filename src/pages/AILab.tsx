@@ -58,7 +58,6 @@ const labImages = [
 
 const features = [
     { icon: Cpu, label: "High-Performance Computing" },
-    { icon: Monitor, label: "Dual-Monitor Workstations" },
     { icon: Brain, label: "AI & ML Specialized Hardware" },
     { icon: Terminal, label: "Collaborative Coding Spaces" },
 ];
